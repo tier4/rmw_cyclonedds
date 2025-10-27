@@ -1164,6 +1164,9 @@ rmw_ret_t configure_qos_for_security(
 rmw_ret_t
 rmw_context_impl_s::init(rmw_init_options_t * options, size_t domain_id)
 {
+  RCUTILS_LOG_INFO_NAMED(
+    "rmw_cyclonedds_cpp", "Using patched CycloneDDS...");
+
   std::lock_guard<std::mutex> guard(initialization_mutex);
   if (0u != this->node_count) {
     // initialization has already been done
