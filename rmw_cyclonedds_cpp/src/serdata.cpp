@@ -1076,11 +1076,11 @@ static void dynamic_type_register(
     desc->type_mapping.sz));
   st->type_mapping.sz = desc->type_mapping.sz;
 
-  dds_dynamic_type_unref(&dt);
-fail_descriptor:
   dds_delete_topic_descriptor(desc);
-fail_typeinfo:
+fail_descriptor:
   dds_free_typeinfo(type_info);
+fail_typeinfo:
+  dds_dynamic_type_unref(&dt);
 }
 
 template<typename MembersType>
